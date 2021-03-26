@@ -22,14 +22,12 @@ def calc(postfix=True, debug=False):
         app.main(do_convert(postfix), debug)
 
 
-@parse.command('convert', help='Convert between postfix and infix expressions.')
-@click.option('--postfix/--infix', '-p/-i', is_flag=True, help='Whether the expression input is a postfix '
-              'expression or infix expression. [default: --postfix]', default=True)
+@parse.command('convert', help='Convert from infix to postfix expression.')
 @click.option('--debug', is_flag=True)
 @click.option('--squish', '-s', is_flag=True, help='Whether to squish the output or not. [default: False]', default=False)
 def convert(postfix=True, debug=False, squish=False):
     from convert import convert as do_convert
-    print(do_convert(postfix, debug, squish))
+    print(do_convert(debug, squish))
 
 
 if __name__ == '__main__':

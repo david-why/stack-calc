@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from exceptions import InputError
 from soperator import SOperator
 from stack import Stack
@@ -92,7 +93,15 @@ def main(i: str = None, debug=False):
             a = []
             for _ in range(F[x][0]):
                 a.insert(0, s.get())
-            s.put(F[x][1](*a))
+            # >>>>> DEBUG
+            # s.put(F[x][1](*a))
+            t = F[x][1](*a)
+            if isinstance(t, tuple):
+                for n in t:
+                    s.put(n)
+            else:
+                s.put(t)
+            # <<<<< DEBUG
         else:
             s.put(x)
     if debug:
